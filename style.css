@@ -788,10 +788,57 @@ body {
   .navbar {
     padding: 18px 20px;
     gap: 16px;
+    justify-content: space-between;
   }
 
   .nav-links {
-    display: none;
+    display: none; /* Desktop menu hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #090909;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s var(--ease), visibility 0.5s;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .navbar.nav-open .nav-links {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links li {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.6s var(--ease), opacity 0.6s;
+  }
+
+  .navbar.nav-open .nav-links li {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Stagger delays for menu items */
+  .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links li:nth-child(3) { transition-delay: 0.2s; }
+  .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+  .nav-links li:nth-child(5) { transition-delay: 0.3s; }
+  .nav-links li:nth-child(6) { transition-delay: 0.35s; }
+
+  .nl {
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
   }
 
   .left-panel,
@@ -801,6 +848,16 @@ body {
 
   .burger {
     display: flex;
+    position: relative;
+    z-index: 2100;
+  }
+
+  /* Animated Burger */
+  .navbar.nav-open .burger span:nth-child(1) {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .navbar.nav-open .burger span:nth-child(2) {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 
   .text-zone {

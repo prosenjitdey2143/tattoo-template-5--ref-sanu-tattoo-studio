@@ -410,8 +410,23 @@
         });
         this.classList.add('active');
         this.classList.add('is-active');
+
+        // Close mobile menu if open
+        var navbar = document.getElementById('navbar');
+        if (navbar && navbar.classList.contains('nav-open')) {
+          navbar.classList.remove('nav-open');
+        }
       });
     });
+
+    // Mobile Burger Toggle
+    var burger = document.getElementById('burger');
+    var navbar = document.getElementById('navbar');
+    if (burger && navbar) {
+      burger.addEventListener('click', function() {
+        navbar.classList.toggle('nav-open');
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
