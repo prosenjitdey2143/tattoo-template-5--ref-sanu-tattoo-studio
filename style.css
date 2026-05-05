@@ -860,6 +860,29 @@ body {
     transform: translateY(-3.5px) rotate(-45deg);
   }
 
+  /* Hide Custom Cursor on Mobile */
+  .cursor,
+  .cursor-ring {
+    display: none !important;
+  }
+  
+  body, 
+  a, 
+  button, 
+  .track-card, 
+  .dn-dot, 
+  .cta-circle, 
+  .sv-item, 
+  .pf-arr, 
+  .rl-arr, 
+  .tm-dot, 
+  .tm-play-btn, 
+  .cf-btn,
+  .vtag-item,
+  .book-btn {
+    cursor: auto !important;
+  }
+
   .text-zone {
     left: 20px;
     right: 80px;
