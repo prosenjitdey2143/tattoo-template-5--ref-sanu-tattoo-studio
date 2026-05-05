@@ -87,28 +87,6 @@
   });
 
   /* ══════════════════════════════════════════
-     MOBILE MENU (BURGER)
-  ══════════════════════════════════════════ */
-  var burger = document.getElementById('burger');
-  var navLinks = document.querySelector('.nav-links');
-  if (burger && navLinks) {
-    burger.addEventListener('click', function() {
-      burger.classList.toggle('is-active');
-      navLinks.classList.toggle('is-active');
-      document.body.classList.toggle('no-scroll');
-    });
-    
-    // Close on link click
-    navLinks.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        burger.classList.remove('is-active');
-        navLinks.classList.remove('is-active');
-        document.body.classList.remove('no-scroll');
-      });
-    });
-  }
-
-  /* ══════════════════════════════════════════
      SCROLL HINT BOUNCE
   ══════════════════════════════════════════ */
   if (scrollHint) {
@@ -747,10 +725,7 @@
     }
 
     /* Start after short delay to ensure layout is done */
-    /* Only run marquee on desktop screens */
-    if (window.innerWidth > 900) {
-      setTimeout(startMarquee, 120);
-    }
+    setTimeout(startMarquee, 120);
 
     /* ── Hover: slow down ── */
     if (mask) {
@@ -819,18 +794,18 @@
   function initReels() {
     if (typeof Swiper === 'undefined') return;
     var swiper = new Swiper('#rlSwiper', {
-      slidesPerView: 1.2,
-      spaceBetween: 16,
-      grabCursor: false,
+      slidesPerView:  'auto',
+      spaceBetween:   14,
+      freeMode:       true,
+      grabCursor:     false,
       touchEventsTarget: 'wrapper',
       navigation: {
         prevEl: '#rlPrev',
         nextEl: '#rlNext'
       },
       breakpoints: {
-        560:  { slidesPerView: 2.2, spaceBetween: 20 },
-        900:  { slidesPerView: 3.5, spaceBetween: 24 },
-        1200: { slidesPerView: 4.5, spaceBetween: 30 }
+        560:  { spaceBetween: 16 },
+        900:  { spaceBetween: 18 }
       }
     });
   }
