@@ -841,6 +841,15 @@ body {
     letter-spacing: 0.2em;
   }
 
+  /* Remove active underline in mobile menu */
+  .nl::after {
+    display: none !important;
+  }
+
+  .nl.active {
+    color: var(--red) !important;
+  }
+
   .left-panel {
     display: flex;
     position: absolute;
@@ -850,6 +859,7 @@ body {
     width: auto;
     height: auto;
     z-index: 50;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 
   .lp-content {
@@ -905,6 +915,24 @@ body {
     transform: translateY(-3.5px) rotate(-45deg);
   }
 
+  .navbar.nav-open {
+    z-index: 2100;
+  }
+
+  .navbar.nav-open ~ .left-panel,
+  .navbar.nav-open ~ .num-block,
+  .navbar.nav-open ~ .dot-nav,
+  .navbar.nav-open ~ .cta-block,
+  .navbar.nav-open ~ .scroll-hint,
+  .navbar.nav-open ~ .text-zone,
+  .navbar.nav-open ~ .progress-bar,
+  .navbar.nav-open ~ .ring-wrap {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+  }
+
   /* Hide Custom Cursor on Mobile */
   .cursor,
   .cursor-ring {
@@ -931,23 +959,28 @@ body {
   .text-zone {
     left: 20px;
     right: 80px;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 
   .num-block {
     right: 16px;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 
   .dot-nav {
     right: 4px;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 
   .cta-block {
     right: 16px;
     max-width: 190px;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 
   .scroll-hint {
     right: 16px;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
   }
 }
 
