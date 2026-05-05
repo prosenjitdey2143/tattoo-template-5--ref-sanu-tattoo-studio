@@ -809,20 +809,189 @@
   function initReels() {
     if (typeof Swiper === 'undefined') return;
     var swiper = new Swiper('#rlSwiper', {
-      slidesPerView:  'auto',
-      spaceBetween:   14,
-      freeMode:       true,
-      grabCursor:     false,
+      slidesPerView: 'auto',
+      spaceBetween: 14,
+      freeMode: true,
+      grabCursor: false,
       touchEventsTarget: 'wrapper',
       navigation: {
         prevEl: '#rlPrev',
         nextEl: '#rlNext'
       },
       breakpoints: {
-        560:  { spaceBetween: 16 },
-        900:  { spaceBetween: 18 }
+        560: { spaceBetween: 16 },
+        900: { spaceBetween: 18 }
       }
     });
+
+    // Custom Video Player Logic
+    document.querySelectorAll('.rl-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (!this.classList.contains('playing')) {
+          activateCustomPlayer(this);
+        }
+      });
+
+      // Cursor enlargement on hover
+      var cursorRing = document.getElementById('cursorRing');
+      if (cursorRing) {
+        card.addEventListener('mouseenter', function () {
+          if (!this.classList.contains('playing')) {
+            gsap.to(cursorRing, { scale: 2.2, duration: 0.3, ease: 'power3.out' });
+          }
+        });
+        card.addEventListener('mouseleave', function () {
+          gsap.to(cursorRing, { scale: 1, duration: 0.3, ease: 'power3.out' });
+        });
+      }
+    });
+
+    function activateCustomPlayer(card) {
+      var video = card.querySelector('.rl-main-video');
+      if (!video) return;
+
+      card.classList.add('playing');
+
+      // 1. Create Controls UI Overlay
+      var controlsOverlay = document.createElement('div');
+      controlsOverlay.className = 'rl-video-container';
+      controlsOverlay.innerHTML = `
+        <button class="rl-close-reel" aria-label="Close Reel">&times;</button>
+        <div class="rl-center-play">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="rl-controls">
+          <div class="rl-bottom-ctrl">
+             <div class="rl-ctrl-row">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <button class="rl-play-pause-btn" aria-label="Play/Pause">
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  </button>
+                  <button class="rl-mute-btn" aria-label="Mute/Unmute">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  </button>
+                </div>
+                <div class="rl-time-display">0:00 / 0:00</div>
+             </div>
+            <div class="rl-progress-wrap">
+              <div class="rl-progress-bar">
+                <div class="rl-progress-thumb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      card.appendChild(controlsOverlay);
+
+      // Start Playback
+      video.muted = false;
+      video.play();
+      video.style.filter = 'none';
+      video.style.zIndex = '15';
+
+      var playPauseBtn = controlsOverlay.querySelector('.rl-play-pause-btn');
+      var muteBtn = controlsOverlay.querySelector('.rl-mute-btn');
+      var progBar = controlsOverlay.querySelector('.rl-progress-bar');
+      var progWrap = controlsOverlay.querySelector('.rl-progress-wrap');
+      var closeBtn = controlsOverlay.querySelector('.rl-close-reel');
+      var timeDisplay = controlsOverlay.querySelector('.rl-time-display');
+
+      function formatTime(seconds) {
+        var min = Math.floor(seconds / 60);
+        var sec = Math.floor(seconds % 60);
+        return min + ":" + (sec < 10 ? "0" + sec : sec);
+      }
+
+      // Play/Pause Toggle
+      function togglePlay() {
+        if (video.paused) {
+          video.play();
+          controlsOverlay.classList.remove('paused');
+          playPauseBtn.innerHTML = '<svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        } else {
+          video.pause();
+          controlsOverlay.classList.add('paused');
+          playPauseBtn.innerHTML = '<svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+        }
+      }
+
+      playPauseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        togglePlay();
+      });
+
+      // Mute Toggle
+      muteBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        muteBtn.style.opacity = video.muted ? '0.4' : '1';
+        muteBtn.style.color = video.muted ? '#fff' : '#FF5A1F';
+      });
+
+      // Progress & Time Update
+      var updateProgress = function () {
+        var pct = (video.currentTime / video.duration) * 100;
+        progBar.style.width = pct + '%';
+        timeDisplay.innerText = formatTime(video.currentTime) + " / " + formatTime(video.duration || 0);
+      };
+      video.addEventListener('timeupdate', updateProgress);
+
+      // --- Scrubbing (Drag to seek) logic ---
+      var isDragging = false;
+      function scrub(e) {
+        var rect = progWrap.getBoundingClientRect();
+        var pos = (e.clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        video.currentTime = pos * video.duration;
+      }
+
+      var onMouseDown = function (e) {
+        isDragging = true;
+        progWrap.classList.add('dragging');
+        scrub(e);
+      };
+      var onMouseMove = function (e) {
+        if (isDragging) scrub(e);
+      };
+      var onMouseUp = function () {
+        if (isDragging) {
+          isDragging = false;
+          progWrap.classList.remove('dragging');
+        }
+      };
+
+      progWrap.addEventListener('mousedown', onMouseDown);
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+
+      // Toggle Play/Pause on Card Click
+      controlsOverlay.addEventListener('click', function (e) {
+        if (e.target.closest('.rl-close-reel') || e.target.closest('.rl-mute-btn') || e.target.closest('.rl-progress-wrap') || e.target.closest('.rl-play-pause-btn')) return;
+        togglePlay();
+      });
+
+      // Close Player
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.pause();
+        video.currentTime = 0;
+        video.style.filter = '';
+        video.style.zIndex = '';
+        
+        // Cleanup listeners
+        video.removeEventListener('timeupdate', updateProgress);
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onMouseUp);
+
+        gsap.to(controlsOverlay, {
+          opacity: 0, duration: 0.3, onComplete: function () {
+            controlsOverlay.remove();
+            card.classList.remove('playing');
+          }
+        });
+      });
+    }
   }
 
   function init() {
