@@ -310,7 +310,8 @@ body {
   background: none;
   border: none;
   cursor: none;
-  display: flex;
+  display: none;
+  /* Hidden on large screens */
   flex-direction: column;
   gap: 6px;
   padding: 4px;
@@ -364,6 +365,7 @@ body {
   position: fixed;
   top: 26%;
   left: 0;
+  z-index: 100;
 }
 
 .vtag-item {
@@ -379,6 +381,7 @@ body {
   transition: color .4s;
   padding: 0;
   position: relative;
+  top: 22%;
   text-decoration: none;
   display: block;
 }
@@ -791,8 +794,13 @@ body {
     display: none;
   }
 
-  .left-panel {
+  .left-panel,
+  .vtag {
     display: none;
+  }
+
+  .burger {
+    display: flex;
   }
 
   .text-zone {

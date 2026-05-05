@@ -333,7 +333,7 @@
   function intro() {
     var tl = gsap.timeline({ delay: 0.15 });
 
-    gsap.set(['.navbar', '.left-panel', '.num-block', '.dot-nav', '.cta-block', '.scroll-hint'], { opacity: 0 });
+    gsap.set(['.navbar', '.left-panel', '.vtag', '.num-block', '.dot-nav', '.cta-block', '.scroll-hint'], { opacity: 0 });
     gsap.set('#ringWrap', { opacity: 0 });  /* opacity only — no transform so CSS spin is unaffected */
     gsap.set('.navbar',     { y: -65 });
     gsap.set('.left-panel', { x: -50 });
@@ -343,6 +343,7 @@
 
     tl.to('.navbar',     { y: 0, opacity: 1, duration: .9, ease: EO })
       .to('.left-panel', { x: 0, opacity: 1, duration: .9, ease: EO }, '-=.65')
+      .to('.vtag',       { opacity: 1, duration: .9, ease: EO }, '-=.9')
       .to('#ringWrap',   { opacity: 1, duration: 1.4, ease: EO }, '-=.72')  /* fade in only */
       .to('.num-block',  { x: 0, opacity: 1, duration: .9, ease: EO }, '-=.8')
       .to('.dot-nav',    { x: 0, opacity: 1, duration: .7, ease: EO }, '-=.65')
