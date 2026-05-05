@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Midnight Moon — Premium Tattoo Studio</title>
+  <meta name="description" content="Midnight Moon Premium Tattoo Studio. Cinematic ink experiences crafted for life."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <section class="hero" id="hero">
+
+    <!-- ═══════════ BACKGROUNDS ═══════════ -->
+    <div class="bg-wrap">
+
+      <!-- SLIDE 0 — VIDEO -->
+      <div class="bg-slide is-active" id="bg0" data-type="video">
+        <video
+          id="heroVideo"
+          class="bg-video"
+          src="images/Tattoo_artist_holding_machine_202605042117.mp4"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+        ></video>
+        <div class="bg-fog"></div>
+      </div>
+
+      <!-- SLIDE 1 — IMAGE -->
+      <div class="bg-slide" id="bg1" data-type="image">
+        <div class="bg-inner" style="background-image:url('images/slide1.jpg')"></div>
+        <div class="bg-fog"></div>
+      </div>
+
+      <!-- SLIDE 2 — IMAGE -->
+      <div class="bg-slide" id="bg2" data-type="image">
+        <div class="bg-inner" style="background-image:url('images/slide2.jpg')"></div>
+        <div class="bg-fog"></div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════ CIRCLE RING ═══════════ -->
+    <!-- ring-wrap: GSAP controls opacity/scale on this outer div -->
+    <!-- ring-rotate: CSS animation controls rotation on this inner div -->
+    <div class="ring-wrap" id="ringWrap">
+      <div class="ring-rotate">
+        <svg viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="350" cy="350" r="330" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <circle cx="350" cy="350" r="290" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <circle cx="350" cy="350" r="330" stroke="rgba(255,255,255,0.13)" stroke-width="0.5" stroke-dasharray="4 10"/>
+          <line x1="20" y1="350" x2="680" y2="350" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="350" y1="20" x2="350" y2="680" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <circle cx="350" cy="20"  r="3.5" fill="rgba(255,255,255,0.28)"/>
+          <circle cx="350" cy="680" r="3.5" fill="rgba(255,255,255,0.28)"/>
+          <circle cx="20"  cy="350" r="3.5" fill="rgba(255,255,255,0.28)"/>
+          <circle cx="680" cy="350" r="3.5" fill="rgba(255,255,255,0.28)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#cc1111"/>
+            <path d="M13 22 Q22 11 31 22 Q22 33 13 22Z" fill="white" opacity="0.92"/>
+            <circle cx="22" cy="22" r="3" fill="white"/>
+          </svg>
+        </div>
+        <span class="brand-name">Midnight Moon</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nl active">Home</a></li>
+        <li><a href="#about" class="nl">About</a></li>
+        <li><a href="#services" class="nl">Services</a></li>
+        <li><a href="#portfolio" class="nl">Portfolio</a></li>
+        <li><a href="#ctaFinal" class="nl">Contact</a></li>
+      </ul>
+
+      <div class="nav-end">
+        <a href="#ctaFinal" class="book-btn">Book Appointment</a>
+        <button class="burger" id="burger" aria-label="menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══════════ LEFT PANEL ═══════════ -->
+    <aside class="left-panel" id="leftPanel">
+      <div class="lp-content">
+        <div class="vtag">
+          <a href="#hero" class="vtag-item is-active">Home</a>
+          <a href="#about" class="vtag-item">About</a>
+          <a href="#services" class="vtag-item">Services</a>
+          <a href="#portfolio" class="vtag-item">Portfolio</a>
+          <a href="#ctaFinal" class="vtag-item">Contact</a>
+        </div>
+
+        <div class="track-cards">
+          <div class="track-card is-active" data-go="0">
+            <div class="tc-bar"></div>
+            <div class="tc-info">
+              <span class="tc-name">New Orders</span>
+              <span class="tc-desc">Lorem ipsum dolor sit amet</span>
+            </div>
+          </div>
+          <div class="track-card" data-go="1">
+            <div class="tc-bar"></div>
+            <div class="tc-info">
+              <span class="tc-name">Got Miracles</span>
+              <span class="tc-desc">Lorem ipsum dolor sit amet</span>
+            </div>
+          </div>
+          <div class="track-card" data-go="2">
+            <div class="tc-bar"></div>
+            <div class="tc-info">
+              <span class="tc-name">Tendencies</span>
+              <span class="tc-desc">Lorem ipsum dolor sit amet</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="#" class="soc-link" aria-label="Twitter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="Facebook">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="soc-link" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ═══════════ HERO TEXT SLOTS ═══════════ -->
+    <div class="text-zone" id="textZone">
+
+      <div class="text-slot is-active" id="ts0">
+        <div class="ts-eye">
+          <span class="ts-cross">+</span>
+          <span class="ts-eyetxt">GOT</span>
+          <span class="ts-cross">+</span>
+        </div>
+        <h1 class="ts-title">Miracles</h1>
+        <p class="ts-sub">I Like it Like That</p>
+      </div>
+
+      <div class="text-slot" id="ts1">
+        <div class="ts-eye">
+          <span class="ts-cross">—</span>
+          <span class="ts-eyetxt">INK YOUR</span>
+          <span class="ts-cross">—</span>
+        </div>
+        <h1 class="ts-title">Story</h1>
+        <p class="ts-sub">Crafted for Life</p>
+      </div>
+
+      <div class="text-slot" id="ts2">
+        <div class="ts-eye">
+          <span class="ts-cross">—</span>
+          <span class="ts-eyetxt">ART THAT</span>
+          <span class="ts-cross">—</span>
+        </div>
+        <h1 class="ts-title">Becomes You</h1>
+        <p class="ts-sub">Premium Tattoo Experience</p>
+      </div>
+
+    </div>
+
+    <!-- ═══════════ SLIDE NUMBER ═══════════ -->
+    <div class="num-block" id="numBlock">
+      <div class="num-arrows">
+        <button class="num-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+        <button class="num-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
+      </div>
+      <div class="num-viewport">
+        <div class="num-rail" id="numRail">
+          <span class="num-item">01</span>
+          <span class="num-item">02</span>
+          <span class="num-item">03</span>
+        </div>
+      </div>
+      <div class="num-denom">/ 03</div>
+    </div>
+
+    <!-- ═══════════ DOT NAV ═══════════ -->
+    <div class="dot-nav" id="dotNav">
+      <button class="dn-dot is-active" data-go="0" aria-label="Slide 1"></button>
+      <button class="dn-dot" data-go="1" aria-label="Slide 2"></button>
+      <button class="dn-dot" data-go="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- ═══════════ PROGRESS BAR ═══════════ -->
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- ═══════════ CTA BLOCK ═══════════ -->
+    <div class="cta-block" id="ctaBlock">
+      <div class="cta-redline"></div>
+      <div class="cta-row">
+        <a href="#about" class="cta-circle">GO</a>
+        <div class="cta-copy">
+          <p class="cta-head" id="ctaHead">A New Beginning</p>
+          <p class="cta-para" id="ctaPara">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore in aliqua.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ SCROLL HINT ═══════════ -->
+    <a href="#about" class="scroll-hint" id="scrollHint">
+      <div class="sh-dot"><div class="sh-inner"></div></div>
+      <span class="sh-label">Scroll for next</span>
+    </a>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ABOUT / STORY SECTION
+  ══════════════════════════════════════════ -->
+  <section class="about" id="about">
+
+    <!-- LEFT — TEXT BLOCK -->
+    <div class="ab-left">
+
+      <!-- Section number -->
+      <span class="ab-num">01</span>
+      <div class="ab-num-line"></div>
+
+      <!-- Label -->
+      <p class="ab-label">About Us</p>
+
+      <!-- Heading -->
+      <div class="ab-head-wrap">
+        <h2 class="ab-heading">
+          <span class="ab-line" data-line="0">We Don't Just</span>
+          <span class="ab-line" data-line="1">Make Tattoos</span>
+          <span class="ab-line ab-italic" data-line="2">We Craft Stories</span>
+        </h2>
+      </div>
+
+      <!-- Red divider -->
+      <div class="ab-divider"></div>
+
+      <!-- Paragraph -->
+      <p class="ab-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua.</p>
+
+      <!-- CTA -->
+      <a
+        class="ab-btn"
+        href="https://wa.me/1234567890?text=I%20want%20to%20book%20a%20tattoo"
+        target="_blank"
+        rel="noopener"
+        id="abBtn"
+      >
+        Discover More
+        <span class="ab-btn-arrow">&#8594;</span>
+      </a>
+
+    </div>
+
+    <!-- RIGHT — VISUAL BLOCK -->
+    <div class="ab-right" id="abRight">
+
+      <!-- Background image -->
+      <div class="ab-img" style="background-image:url('images/about.jpg')" id="abImg"></div>
+      <div class="ab-img-overlay"></div>
+
+      <!-- 1. Large faint ghost circle -->
+      <div class="ab-ghost-circle"></div>
+
+      <!-- 2. Half arc (CSS only) -->
+      <div class="ab-arc"></div>
+
+      <!-- 3. Rotating brand circle -->
+      <div class="ab-brand-ring" id="abBrandRing">
+        <!-- Circular SVG text -->
+        <svg class="ab-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="circlePath"
+              d="M 100,100
+                 m -78,0
+                 a 78,78 0 1,1 156,0
+                 a 78,78 0 1,1 -156,0"
+            />
+          </defs>
+          <!-- outer ring -->
+          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+          <!-- Circular text -->
+          <text class="ab-ring-text">
+            <textPath href="#circlePath" startOffset="0%" textLength="490">
+              MIDNIGHT MOON TATTOO STUDIO &bull; MIDNIGHT MOON TATTOO STUDIO &bull;
+            </textPath>
+          </text>
+        </svg>
+
+        <!-- 4. Center dot / target -->
+        <div class="ab-target">
+          <div class="ab-target-outer"></div>
+          <div class="ab-target-mid"></div>
+          <div class="ab-target-dot"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICES SECTION
+  ══════════════════════════════════════════ -->
+  <section class="services" id="services">
+
+    <!-- Top meta -->
+    <div class="sv-meta">
+      <span class="sv-num">02</span>
+      <div class="sv-meta-right">
+        <div class="sv-meta-line"></div>
+        <p class="sv-label">Our Services</p>
+      </div>
+    </div>
+
+    <!-- Divider line -->
+    <div class="sv-rule"></div>
+
+    <!-- Services grid -->
+    <div class="sv-grid" id="svGrid">
+
+      <!-- 1 · Custom Tattoo -->
+      <div class="sv-item" id="sv0">
+        <div class="sv-icon-wrap">
+          <div class="sv-icon-pulse"></div>
+          <div class="sv-icon-circle">
+            <svg class="sv-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Tattoo needle / pen -->
+              <line x1="32" y1="8" x2="16" y2="36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 36 L13 43 L20 40 Z" fill="currentColor" opacity=".85"/>
+              <line x1="28" y1="10" x2="34" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="30" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="sv-title">Custom Tattoo</h3>
+        <p class="sv-desc">Unique designs tailored to<br>your vision and personality.</p>
+        <a href="#" class="sv-cta" aria-label="Learn more about Custom Tattoo">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Vertical separator -->
+      <div class="sv-sep"></div>
+
+      <!-- 2 · Piercing -->
+      <div class="sv-item" id="sv1">
+        <div class="sv-icon-wrap">
+          <div class="sv-icon-pulse"></div>
+          <div class="sv-icon-circle">
+            <svg class="sv-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Piercing ring -->
+              <circle cx="24" cy="22" r="12" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="10" r="3" fill="currentColor" opacity=".9"/>
+              <path d="M21 10 Q18 6 20 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="sv-title">Piercing</h3>
+        <p class="sv-desc">Professional piercing in a<br>safe and sterile environment.</p>
+        <a href="#" class="sv-cta" aria-label="Learn more about Piercing">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="sv-sep"></div>
+
+      <!-- 3 · Tattoo Care -->
+      <div class="sv-item" id="sv2">
+        <div class="sv-icon-wrap">
+          <div class="sv-icon-pulse"></div>
+          <div class="sv-icon-circle">
+            <svg class="sv-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cream tube -->
+              <rect x="17" y="12" width="14" height="22" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="20" y="8" width="8" height="5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="20" y1="19" x2="28" y2="19" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+              <line x1="20" y1="23" x2="28" y2="23" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".4"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="sv-title">Tattoo Care</h3>
+        <p class="sv-desc">Premium aftercare products<br>for perfect healing.</p>
+        <a href="#" class="sv-cta" aria-label="Learn more about Tattoo Care">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="sv-sep"></div>
+
+      <!-- 4 · Cover Up -->
+      <div class="sv-item" id="sv3">
+        <div class="sv-icon-wrap">
+          <div class="sv-icon-pulse"></div>
+          <div class="sv-icon-circle">
+            <svg class="sv-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pencil / cover-up brush -->
+              <path d="M30 10 L38 18 L18 38 L10 38 L10 30 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <line x1="26" y1="14" x2="34" y2="22" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+              <path d="M10 38 L14 34" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="sv-title">Cover Up</h3>
+        <p class="sv-desc">Expert cover-up tattoos<br>to transform and renew.</p>
+        <a href="#" class="sv-cta" aria-label="Learn more about Cover Up">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      </div><!-- /sv-grid -->
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PORTFOLIO SECTION (03)
+  ══════════════════════════════════════════ -->
+  <section class="portfolio" id="portfolio">
+
+    <!-- ── LEFT META COLUMN ── -->
+    <div class="pf-left">
+      <span class="pf-num">04</span>
+      <div class="pf-num-bar"></div>
+      <p class="pf-label">Our Portfolio</p>
+      <h2 class="pf-heading">
+        Ink That<br>
+        <em>Speaks</em>
+      </h2>
+      <div class="pf-divider"></div>
+      <a href="#" class="pf-cta" id="pfCta">
+        Explore Full Portfolio
+        <span class="pf-cta-circle">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <!-- Manual arrows -->
+      <div class="pf-arrows">
+        <button class="pf-arr" id="pfPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L10 7M5 12L10 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="pf-arr" id="pfNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L14 7M19 12L14 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── RIGHT INFINITE TRACK ── -->
+    <div class="pf-right">
+      <div class="pf-track-mask" id="pfMask">
+        <div class="pf-track" id="pfTrack">
+          <!-- SET 1 (original) -->
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/artist1.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/slide1.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/artist2.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/slide2.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/artist3.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/slide3.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card"><div class="pf-img" style="background-image:url('images/about.jpg')"></div><div class="pf-img-fog"></div></div>
+          <!-- SET 2 (duplicate for seamless loop) -->
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/artist1.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/slide1.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/artist2.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/slide2.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/artist3.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/slide3.jpg')"></div><div class="pf-img-fog"></div></div>
+          <div class="pf-card" aria-hidden="true"><div class="pf-img" style="background-image:url('images/about.jpg')"></div><div class="pf-img-fog"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VIDEO REEL SLIDER (below portfolio)
+  ══════════════════════════════════════════ -->
+  <section class="reels" id="reels">
+    <div class="rl-head">
+      <p class="rl-label">Studio Reels</p>
+      <div class="rl-arrows">
+        <button class="rl-arr" id="rlPrev">&#8592;</button>
+        <button class="rl-arr" id="rlNext">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Swiper container -->
+    <div class="swiper rl-swiper" id="rlSwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/artist1.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">0:32</span></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/slide1.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">0:45</span></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/artist2.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">1:02</span></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/slide2.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">0:58</span></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/artist3.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">0:27</span></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide rl-slide">
+          <div class="rl-card">
+            <div class="rl-thumb" style="background-image:url('images/slide3.jpg')"></div>
+            <div class="rl-overlay">
+              <div class="rl-play"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg></div>
+            </div>
+            <div class="rl-info"><span class="rl-tag">Reel</span><span class="rl-dur">1:15</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TESTIMONIAL SECTION (05)
+  ══════════════════════════════════════════ -->
+  <section class="testimonial" id="testimonial">
+
+    <!-- LEFT: Testimonial slides -->
+    <div class="tm-left">
+
+      <!-- Meta -->
+      <div class="tm-meta">
+        <span class="tm-num">05</span>
+        <div class="tm-meta-right">
+          <div class="tm-meta-bar"></div>
+          <p class="tm-label">Testimonials</p>
+        </div>
+      </div>
+
+      <!-- Quote area -->
+      <div class="tm-body" id="tmBody">
+        <div class="tm-quote-icon">&ldquo;</div>
+
+        <!-- Slides (only one visible at a time via JS) -->
+        <div class="tm-slides" id="tmSlides">
+
+          <div class="tm-slide" id="tms0">
+            <p class="tm-text">"The experience was incredible from start to finish. The artists are true professionals and the results exceeded my expectations."</p>
+            <div class="tm-author">
+              <span class="tm-name">Michael R.</span>
+              <span class="tm-role">Custom Tattoo Client</span>
+            </div>
+          </div>
+
+          <div class="tm-slide" id="tms1">
+            <p class="tm-text">"Midnight Moon transformed my old tattoo into a breathtaking piece of art. I've never felt more confident. Absolute masters of their craft."</p>
+            <div class="tm-author">
+              <span class="tm-name">Sarah K.</span>
+              <span class="tm-role">Cover Up Client</span>
+            </div>
+          </div>
+
+          <div class="tm-slide" id="tms2">
+            <p class="tm-text">"From design consultation to the final session, every detail was handled with care. The studio has an energy unlike any other. I'll be back."</p>
+            <div class="tm-author">
+              <span class="tm-name">David M.</span>
+              <span class="tm-role">First Tattoo Client</span>
+            </div>
+          </div>
+
+        </div><!-- /tm-slides -->
+
+        <!-- Dot indicators -->
+        <div class="tm-dots" id="tmDots">
+          <button class="tm-dot is-active" data-idx="0" aria-label="Testimonial 1"></button>
+          <button class="tm-dot" data-idx="1" aria-label="Testimonial 2"></button>
+          <button class="tm-dot" data-idx="2" aria-label="Testimonial 3"></button>
+        </div>
+
+      </div><!-- /tm-body -->
+    </div><!-- /tm-left -->
+
+    <!-- RIGHT: Video module -->
+    <div class="tm-right" id="tmRight">
+
+      <!-- Poster + dark overlay -->
+      <div class="tm-video-wrap" id="tmVideoWrap">
+        <div class="tm-poster" id="tmPoster" style="background-image:url('images/artist1.jpg')"></div>
+        <div class="tm-video-fog"></div>
+
+        <!-- Actual video (hidden until play click) -->
+        <video
+          class="tm-video" id="tmVideo"
+          src="images/Tattoo_artist_holding_machine_202605042117.mp4"
+          preload="none"
+          playsinline
+          controls
+        ></video>
+
+        <!-- Rotating ring + play button -->
+        <div class="tm-ring-wrap" id="tmRingWrap">
+
+          <!-- Rotating circular text -->
+          <svg class="tm-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="tmCirclePath"
+                d="M 100,100
+                   m -78,0
+                   a 78,78 0 1,1 156,0
+                   a 78,78 0 1,1 -156,0"
+              />
+            </defs>
+            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="78" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <text class="tm-ring-text">
+              <textPath href="#tmCirclePath" startOffset="0%">
+                REAL STORIES • REAL CLIENTS • REAL STORIES • REAL CLIENTS •
+              </textPath>
+            </text>
+          </svg>
+
+          <!-- Play button -->
+          <button class="tm-play-btn" id="tmPlayBtn" aria-label="Play testimonial video">
+            <svg viewBox="0 0 24 24" fill="white">
+              <polygon points="6,4 20,12 6,20"/>
+            </svg>
+          </button>
+
+        </div><!-- /tm-ring-wrap -->
+      </div><!-- /tm-video-wrap -->
+
+    </div><!-- /tm-right -->
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FINAL CTA SECTION (06) — Ready To Get Inked?
+  ══════════════════════════════════════════ -->
+  <section class="cta-final" id="ctaFinal" aria-label="Book your tattoo appointment">
+
+    <!-- LEFT — CONTENT -->
+    <div class="cf-left" id="cfLeft">
+
+      <!-- Section number -->
+      <span class="cf-num" id="cfNum">06</span>
+      <div class="cf-num-line"></div>
+
+      <!-- Heading -->
+      <div class="cf-head-wrap" id="cfHeadWrap">
+        <h2 class="cf-heading">
+          <span class="cf-line" id="cfLine0">Ready To</span>
+          <span class="cf-line cf-line-italic" id="cfLine1">Get Inked?</span>
+        </h2>
+      </div>
+
+      <!-- Subtext -->
+      <p class="cf-sub" id="cfSub">Book your appointment today and let's bring your ideas to life.</p>
+
+      <!-- WhatsApp CTA Button -->
+      <a
+        class="cf-btn"
+        id="cfBtn"
+        href="https://wa.me/1234567890?text=Hello%20I%20want%20to%20book%20a%20tattoo%20appointment"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Book a tattoo appointment via WhatsApp"
+      >
+        <span class="cf-btn-text">Book Appointment</span>
+        <span class="cf-btn-arrow">→</span>
+        <span class="cf-btn-glow"></span>
+      </a>
+
+    </div>
+
+    <!-- RIGHT — VISUAL -->
+    <div class="cf-right" id="cfRight">
+
+      <!-- Background image -->
+      <div class="cf-img" id="cfImg" style="background-image:url('images/cta_machine.png')"></div>
+
+      <!-- Dark overlay / gradient blend -->
+      <div class="cf-img-overlay"></div>
+
+      <!-- Decorative rotating circle -->
+      <div class="cf-circle-wrap" id="cfCircleWrap">
+        <div class="cf-circle-rotate" id="cfCircleRotate">
+          <svg class="cf-circle-svg" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main thin ring -->
+            <circle cx="220" cy="220" r="210" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <!-- Inner ring -->
+            <circle cx="220" cy="220" r="185" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+            <!-- Dashed accent ring (orange) -->
+            <circle cx="220" cy="220" r="210" stroke="rgba(255,90,31,0.18)" stroke-width="0.8" stroke-dasharray="6 14"/>
+            <!-- Cross lines -->
+            <line x1="10" y1="220" x2="430" y2="220" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <line x1="220" y1="10" x2="220" y2="430" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <!-- Cardinal dots -->
+            <circle cx="220" cy="10"  r="3" fill="rgba(255,90,31,0.55)"/>
+            <circle cx="220" cy="430" r="3" fill="rgba(255,90,31,0.55)"/>
+            <circle cx="10"  cy="220" r="3" fill="rgba(255,90,31,0.55)"/>
+            <circle cx="430" cy="220" r="3" fill="rgba(255,90,31,0.55)"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER SECTION
+  ══════════════════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <!-- Blurred Background -->
+    <div class="footer-bg">
+      <div class="footer-img" style="background-image:url('images/footer_bg.png')"></div>
+      <div class="footer-overlay"></div>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-grid">
+        
+        <!-- 1. BRAND -->
+        <div class="footer-col brand-col">
+          <div class="f-logo">
+            <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="21" fill="#cc1111"/>
+              <path d="M13 22 Q22 11 31 22 Q22 33 13 22Z" fill="white" opacity="0.92"/>
+              <circle cx="22" cy="22" r="3" fill="white"/>
+            </svg>
+            <span class="f-brand-name">Midnight Moon</span>
+          </div>
+          <p class="f-desc">Premium tattoo and piercing studio creating timeless body art. Crafting stories in ink since 2010.</p>
+        </div>
+
+        <!-- 2. NAVIGATION -->
+        <div class="footer-col nav-col">
+          <h4 class="f-title">Navigation</h4>
+          <ul class="f-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#ctaFinal">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. SERVICES -->
+        <div class="footer-col svc-col">
+          <h4 class="f-title">Services</h4>
+          <ul class="f-links">
+            <li><a href="#">Custom Tattoo</a></li>
+            <li><a href="#">Piercing</a></li>
+            <li><a href="#">Tattoo Care</a></li>
+            <li><a href="#">Cover Up</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. STUDIO INFO + MAP -->
+        <div class="footer-col info-col">
+          <h4 class="f-title">Studio Info</h4>
+          <div class="f-info-text">
+            <p>123 Ink Street, Los Angeles, CA</p>
+            <p>+1 (555) 123-4567</p>
+            <p><a href="mailto:info@midnightmoon.com">info@midnightmoon.com</a></p>
+          </div>
+          
+          <!-- Small Map -->
+          <div class="f-map-wrap">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043702!2d-118.2436849!3d34.0522342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c648fa1d4867%3A0x14068305899859f!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1714856000000!5m2!1sen!2sus" 
+              width="100%" height="120" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <!-- Socials -->
+          <div class="f-socials">
+            <a href="#" class="f-soc-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" class="f-soc-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="f-soc-link" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-1.26-.88-2.22-2.19-2.68-3.64-.03 5.22-.03 10.45-.02 15.67-.13 3.65-3.32 6.55-6.95 6.47-3.6-.07-6.52-3.12-6.52-6.72.06-3.64 3.12-6.6 6.75-6.42.03 1.33.01 2.66.01 3.99-2.01-.13-3.8 1.55-3.79 3.56.12 1.93 1.84 3.44 3.77 3.33 1.89-.1 3.4-1.74 3.32-3.63.02-7.14.01-14.28.02-21.41z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM BAR -->
+      <div class="f-bottom">
+        <div class="f-copy">&copy; 2024 Midnight Moon Tattoo Studio. All rights reserved.</div>
+        <div class="f-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
